@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
 import SearchForm from '../containers/SearchForm';
+import ResultList from '../containers/ResultList';
 
 class HomeScreen extends React.Component {
   render() {
@@ -19,10 +20,13 @@ class HomeScreen extends React.Component {
 }
 
 class SearchScreen extends React.Component {
+    static navigationOptions = {
+        title: 'Search',
+    };
+    
   render() {
     return (
       <View style={styles.container}>
-        <Text>Search Screen</Text>
         <SearchForm onSubmit={() => this.props.navigation.navigate('Results')}/>
       </View>
     );
@@ -30,10 +34,15 @@ class SearchScreen extends React.Component {
 }
 
 class ResultsScreen extends React.Component {
+    static navigationOptions = {
+        title: 'Results',
+    };
+    
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Results Screen</Text>
+        <Text>Result List</Text>
+        <ResultList />
       </View>
     );
   }

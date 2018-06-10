@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
+import SearchForm from '../containers/SearchForm';
+
 class HomeScreen extends React.Component {
   render() {
     return (
@@ -21,6 +23,7 @@ class SearchScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Search Screen</Text>
+        <SearchForm onSubmit={() => this.props.navigation.navigate('Results')}/>
       </View>
     );
   }

@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
+
 import {
     INPUT,
     BEGIN_SEARCH,
@@ -7,7 +9,6 @@ import {
     BACK_RESULTS,
     PAGES  
 } from './actions';
-//import { reducer as formReducer } from 'redux-form'
 
 
 
@@ -54,7 +55,7 @@ function page(state=PAGES.SEARCH, action) {
 }
 
 const rootReducer = combineReducers({
-    //  form: formReducer
+    form: formReducer,
     searchTerm,
     data,
     isSearching

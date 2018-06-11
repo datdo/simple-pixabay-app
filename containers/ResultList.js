@@ -6,7 +6,12 @@ import ImageList from '../components/ImageList';
 import { fetchData } from '../actions';
 
 const mapStateToProps = state => {
-    let storedData = state.data.map(imgdata => ({ key: imgdata.id, ...imgdata }));
+    let storedData = state.data.map(imgdata => ({
+        key: imgdata.id.toString(),
+        url: imgdata.previewURL,
+        width: imgdata.previewWidth,
+        height: imgdata.previewHeight
+    }));
     return {
         data: storedData
     };

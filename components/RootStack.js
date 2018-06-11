@@ -23,11 +23,13 @@ class SearchScreen extends React.Component {
     static navigationOptions = {
         title: 'Search',
     };
-    
+
   render() {
     return (
       <View style={styles.container}>
-        <SearchForm onSubmit={() => this.props.navigation.navigate('Results')}/>
+            <SearchForm
+        navigate={() => this.props.navigation.navigate('Results')}
+          />
       </View>
     );
   }

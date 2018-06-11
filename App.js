@@ -1,13 +1,16 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
 import RootStack from './components/RootStack';
 import rootReducer from './reducers';
 
 
-const store = createStore(rootReducer);
+const store = createStore(
+    rootReducer,
+    applyMiddleware(thunkMiddleware)
+);
 
 export default class App extends React.Component {
     render() {

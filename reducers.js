@@ -2,7 +2,6 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
 import {
-    INPUT,
     BEGIN_SEARCH,
     FINISH_SEARCH,
     CLICK_IMAGE,
@@ -12,19 +11,25 @@ import {
 
 
 
-function searchTerm(state="", action) {
+function query(state="", action) {
     switch(action.type) {
-    case INPUT:
-	return action.text;
+    case BEGIN_SEARCH:
+	return action.query;
     default:
 	return state;
     }
 }
 
-function data(state={}, action) {
+function data(state=[], action) {
     switch(action.type) {
     case FINISH_SEARCH:
-	return action.data;
+        if ('error' in action) {
+            console.error(action.error);
+            return state;
+        }
+        else {
+	    return action.data.hits;
+        }
     default:
 	return state;
     }
@@ -35,7 +40,7 @@ function isSearching(state=false, action) {
     case BEGIN_SEARCH:
 	return true;
     case FINISH_SEARCH:
-	return true;
+	return false;
     default:
 	return state;
     }
@@ -56,7 +61,7 @@ function page(state=PAGES.SEARCH, action) {
 
 const rootReducer = combineReducers({
     form: formReducer,
-    searchTerm,
+    query,
     data,
     isSearching
 });

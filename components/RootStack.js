@@ -20,36 +20,37 @@ class HomeScreen extends React.Component {
 }
 
 class SearchScreen extends React.Component {
-    static navigationOptions = {
-        title: 'Search',
-    };
+  static navigationOptions = {
+    title: 'Search',
+  };
 
   render() {
     return (
       <View style={styles.container}>
-            <SearchForm
-        navigate={() => this.props.navigation.navigate('Results')}
-          />
+        <SearchForm
+          navigate={() => this.props.navigation.navigate('Results')}
+        />
       </View>
     );
   }
 }
 
 class ResultsScreen extends React.Component {
-    static navigationOptions = {
-        title: 'Results',
-    };
-    
+  static navigationOptions = {
+    title: 'Results',
+  };
+
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={styles.container}>
         <Text>Result List</Text>
-        <ResultList />
+        <ResultList
+          navigate={() => this.props.navigation.navigate('Details')}
+        />
       </View>
     );
   }
 }
-
 
 class DetailsScreen extends React.Component {
   render() {
@@ -69,22 +70,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   search: {
-      height: 20,
-      width: 200
+    height: 20,
+    width: 200
   }
 });
 
 
 const RootStack = createStackNavigator(
-    {
-        Home: HomeScreen,
-        Search: SearchScreen,
-        Results: ResultsScreen,
-        Details: DetailsScreen
-    },
-    {
-        initialRouteName: "Home"
-    }
+  {
+    Home: HomeScreen,
+    Search: SearchScreen,
+    Results: ResultsScreen,
+    Details: DetailsScreen
+  },
+  {
+    initialRouteName: "Home"
+  }
 );
 
 export default RootStack;

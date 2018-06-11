@@ -5,13 +5,14 @@ import PixabayImage from './PixabayImage';
 
 class ImageList extends React.Component {
   render() {
+    const { data, navigate } = this.props;
     return (
       <View>
         <Text>Results</Text>
         <FlatList
-        data={this.props.data}
-        renderItem={({item}) => <PixabayImage {...item} />}
-            />
+          data={data}
+          renderItem={({item}) => <PixabayImage {...item} onPress={navigate} />}
+        />
       </View>
     );
   }

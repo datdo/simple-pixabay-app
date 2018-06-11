@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import ImageList from '../components/ImageList';
 
-import { fetchData } from '../actions';
+import { fetchData, clickImage } from '../actions';
 
 const mapStateToProps = state => {
     let storedData = state.data.map(imgdata => ({
@@ -17,8 +17,13 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = {
-    loadNext: fetchData
+const mapDispatchToProps = dispatch => {
+    return {
+        loadNext: fetchData,
+        onClickImage: id => {
+            dispatch(clickImage(id))
+        }
+    }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ImageList);

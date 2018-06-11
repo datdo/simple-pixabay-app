@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation';
 
 import SearchForm from '../containers/SearchForm';
 import ResultList from '../containers/ResultList';
+import Details from '../containers/Details'
 
 class HomeScreen extends React.Component {
   render() {
@@ -56,7 +57,8 @@ class DetailsScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Details Screen</Text>
+      <Text>Details Screen</Text>
+        <Details />
       </View>
     );
   }

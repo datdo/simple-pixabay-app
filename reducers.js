@@ -5,8 +5,6 @@ import {
     BEGIN_SEARCH,
     FINISH_SEARCH,
     CLICK_IMAGE,
-    BACK_RESULTS,
-    PAGES  
 } from './actions';
 
 
@@ -46,24 +44,21 @@ function isSearching(state=false, action) {
     }
 }
 
-function page(state=PAGES.SEARCH, action) {
+function currentImage(state=null, action) {
     switch(action.type) {
-    case BEGIN_SEARCH:
-	return PAGES.RESULTS;
     case CLICK_IMAGE:
-	return PAGES.IMAGE;
-    case BACK_RESULTS:
-	return PAGES.RESULTS;
+	return action.key;
     default:
 	return state;
     }
 }
 
 const rootReducer = combineReducers({
-    form: formReducer,
-    query,
-    data,
-    isSearching
+  form: formReducer,
+  query,
+  data,
+  isSearching,
+  currentImage
 });
 
 

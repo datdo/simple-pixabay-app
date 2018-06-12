@@ -3,7 +3,7 @@ import { reduxForm, Field } from 'redux-form';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 import SearchBox from '../components/SearchBox';
-import { fetchData } from '../actions.js';
+import { newSearch } from '../actions.js';
 import { apiKey } from '../secrets.js'
 
 
@@ -13,7 +13,7 @@ class SearchForm extends React.Component {
         return (values, dispatch) => {
             navigate();
             let query = values.query;
-            dispatch(fetchData(query, apiKey));
+            dispatch(newSearch(query, apiKey));
         };
     }
 

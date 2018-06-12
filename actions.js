@@ -17,8 +17,8 @@ export function beginSearch(query) {
 export function fetchData(query, key) {
   return dispatch => {
     dispatch(beginSearch(query));
-    // return fetch(`https://pixabay.com/api/?q=${query}&key=${key}`)
-    return fetch(`http://213.239.228.130/api/?q=${query}&key=${key}`,{
+    // return fetch(`https://pixabay.com/api/?q=${query}&key=${key}&image_type=photo`)
+    return fetch(`http://213.239.228.130/api/?q=${query}&key=${key}&image_type=photo`,{
       headers:{
         Host: 'pixabay.com'
       }

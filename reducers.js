@@ -27,8 +27,10 @@ function data(state=[], action) {
             return state;
         }
         else {
-	    return action.data.hits;
+	    return state.concat(action.data.hits);
         }
+    case NEW_SEARCH:
+      return [];
     default:
 	return state;
     }
@@ -76,6 +78,7 @@ const rootReducer = combineReducers({
   data,
   isLoading,
   currentImage,
+  page
 });
 
 

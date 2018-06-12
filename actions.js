@@ -36,18 +36,9 @@ function performRequest(dispatch, query, key, page) {
     .catch(error => dispatch(errorLoad(error)));
 }
 
-export function fetchData(query, key) {
+export function fetchData(query, key, page) {
   return dispatch => {
-    dispatch(beginSearch(query));
-    // return fetch(`https://pixabay.com/api/?q=${query}&key=${key}&image_type=photo`)
-    return fetch(`http://213.239.228.130/api/?q=${query}&key=${key}&image_type=photo`,{
-      headers:{
-        Host: 'pixabay.com'
-      }
-    })
-      .then(response => response.json())
-      .then(json => dispatch(finishSearch(json)))
-      .catch(error => dispatch(errorSearch(error)));
+    return performRequest(dispatch, query, key, page);
   };
 }
 

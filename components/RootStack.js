@@ -43,7 +43,7 @@ class ResultsScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View >
         <Text>Result List</Text>
         <ResultList
           navigate={() => this.props.navigation.navigate('Details')}
